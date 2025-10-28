@@ -1,0 +1,354 @@
+/* --- Global & Theme --- */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
+
+:root {
+  --primary-bg: #fdf5f8; /* Very light pink/cream */
+  --secondary-bg: #ffffff; /* White for cards/forms */
+  --text-primary: #5c4b5c; /* Deep lavender-grey */
+  --text-secondary: #8c7b8c; /* Lighter lavender-grey */
+  --accent-primary: #f2a2e4; /* Soft pink */
+  --accent-secondary: #a2e2f2; /* Soft blue */
+  --danger: #ff69b4; /* Hot pink for delete */
+  --border-color: #fce4ec; /* Light pink border */
+  --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.12);
+  --radius: 12px; /* Slightly more rounded */
+  --font-family: 'Quicksand', sans-serif; /* Softer font */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--primary-bg);
+  overflow-x: hidden; /* Hide horizontal scroll from floating elements */
+  position: relative;
+  min-height: 100vh;
+}
+
+/* --- Floating Books Background --- */
+.floatingBook {
+  position: absolute;
+  opacity: 0.6;
+  filter: blur(2px);
+  animation: floatAndFade 20s infinite ease-in-out;
+  pointer-events: none; /* Make them unclickable */
+  z-index: -1; /* Ensure they are behind content */
+}
+
+/* Specific book styles (shapes and colors) */
+.book1 {
+  width: 80px; height: 120px;
+  background-color: #f7cac9; /* Soft coral */
+  border-radius: 8px;
+  left: 10%; top: 15%;
+  animation-delay: 0s;
+}
+.book2 {
+  width: 100px; height: 150px;
+  background-color: #b3e0ff; /* Soft sky blue */
+  border-radius: 10px;
+  left: 80%; top: 50%;
+  animation-delay: 5s;
+  transform: rotate(20deg);
+}
+.book3 {
+  width: 70px; height: 110px;
+  background-color: #d1c4e9; /* Soft lavender */
+  border-radius: 7px;
+  left: 30%; top: 70%;
+  animation-delay: 10s;
+  transform: rotate(-10deg);
+}
+.book4 {
+  width: 90px; height: 130px;
+  background-color: #c9f7d6; /* Soft mint green */
+  border-radius: 9px;
+  left: 5%; top: 85%;
+  animation-delay: 15s;
+  transform: rotate(30deg);
+}
+.book5 {
+  width: 60px; height: 90px;
+  background-color: #ffe0b2; /* Soft peach */
+  border-radius: 6px;
+  left: 90%; top: 10%;
+  animation-delay: 20s;
+  transform: rotate(-25deg);
+}
+.book6 {
+  width: 110px; height: 160px;
+  background-color: #f0e6fa; /* Lighter lavender */
+  border-radius: 11px;
+  left: 45%; top: 5%;
+  animation-delay: 25s;
+  transform: rotate(15deg);
+}
+
+@keyframes floatAndFade {
+  0%, 100% {
+    transform: translateY(0) rotate(var(--initial-rotate, 0deg));
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-20px) rotate(var(--middle-rotate, 5deg));
+    opacity: 0.9;
+  }
+}
+
+/* Applying initial rotation as custom properties to re-use in animation */
+.book1 { --initial-rotate: 0deg; --middle-rotate: 5deg; }
+.book2 { --initial-rotate: 20deg; --middle-rotate: 25deg; }
+.book3 { --initial-rotate: -10deg; --middle-rotate: -5deg; }
+.book4 { --initial-rotate: 30deg; --middle-rotate: 35deg; }
+.book5 { --initial-rotate: -25deg; --middle-rotate: -20deg; }
+.book6 { --initial-rotate: 15deg; --middle-rotate: 20deg; }
+
+
+/* --- Base Layout --- */
+.container {
+  font-family: var(--font-family);
+  max-width: 750px; /* Slightly wider */
+  margin: 50px auto; /* More vertical margin */
+  padding: 35px;
+  background-color: var(--secondary-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  color: var(--text-primary);
+  position: relative; /* For z-index context */
+  z-index: 1; /* Ensure content is above background */
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  border-bottom: 1px solid var(--border-color); /* Thinner border */
+  padding-bottom: 20px;
+}
+
+.header h1,
+.header h2 {
+  margin: 0;
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+/* --- Forms --- */
+.form {
+  margin-bottom: 30px;
+  display: flex;
+  gap: 12px;
+}
+
+.input {
+  flex-grow: 1;
+  padding: 14px 18px; /* Slightly larger padding */
+  font-size: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  background-color: #fff;
+}
+
+.input::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.7;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 4px rgba(242, 162, 228, 0.2); /* Soft pink shadow */
+}
+
+/* --- Buttons --- */
+.button {
+  padding: 14px 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  background-color: var(--accent-primary);
+  color: white;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.button:hover:not(:disabled) {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.button:disabled {
+  background-color: #e0e0e0;
+  cursor: not-allowed;
+  color: #a0a0a0;
+  box-shadow: none;
+}
+
+.backButton {
+  background-color: #d8bfd8; /* Soft lilac */
+}
+
+.studyButton {
+  background-color: var(--accent-secondary); /* Soft blue */
+}
+
+.deleteDeckButton {
+  background-color: var(--danger);
+  padding: 8px 15px;
+  font-size: 0.95rem;
+}
+
+.deleteButton {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--danger);
+  font-size: 1.6rem;
+  font-weight: bold;
+  opacity: 0.6;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.deleteButton:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* --- Deck & Card Lists --- */
+.ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.li {
+  background-color: var(--secondary-bg);
+  padding: 22px;
+  margin-bottom: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: all 0.2s ease-in-out;
+}
+
+.li:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--accent-primary);
+}
+
+.card {
+  background-color: #fdf5f8; /* Lighter shade of primary background */
+  border: 1px solid var(--border-color);
+  padding: 25px;
+  padding-right: 50px; /* Space for delete button */
+  margin-bottom: 15px;
+  border-radius: var(--radius);
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.card p {
+  margin: 8px 0;
+  line-height: 1.6;
+}
+.card p strong {
+    color: var(--text-secondary);
+}
+
+
+/* --- Study Mode --- */
+.studyCard {
+  background-color: var(--secondary-bg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
+  padding: 70px;
+  min-height: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 1.9rem;
+  cursor: pointer;
+  user-select: none;
+  border-radius: var(--radius);
+  transition: background-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
+  color: var(--text-primary);
+  font-weight: 500;
+  position: relative;
+  transform-style: preserve-3d; /* For 3D flip effect */
+}
+
+.studyCardBack {
+  background-color: #fbebf2; /* A slightly different, softer pink for the back */
+  color: var(--text-secondary);
+}
+
+
+.studyControls {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
+}
+
+/* --- Optional: 3D Flip Animation for Study Card --- */
+/* This part adds a nice visual flip effect when clicking the card */
+.flipper {
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.front, .back {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 70px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
+  color: var(--text-primary);
+  font-size: 1.9rem;
+  font-weight: 500;
+  user-select: none;
+  cursor: pointer;
+  box-sizing: border-box; /* Include padding in dimensions */
+}
+
+.front {
+  background-color: var(--secondary-bg);
+  z-index: 2;
+  transform: rotateY(0deg);
+}
+
+.back {
+  background-color: #fbebf2; /* Softer pink for the back */
+  transform: rotateY(180deg);
+  color: var(--text-secondary);
+}
+
+/* When the card is flipped, rotate the flipper container */
+.flipped .flipper {
+  transform: rotateY(180deg);
+}

@@ -1,0 +1,92 @@
+/* --- Add all of this code to your index.css --- */
+
+/* Import Google Font (Quicksand) */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #fdf5f8; /* Very light pink/cream */
+  overflow-x: hidden; /* Hide horizontal scroll from floating elements */
+  position: relative;
+  min-height: 100vh;
+  font-family: 'Quicksand', sans-serif; /* Apply font globally */
+}
+
+/* --- Floating Books Background --- */
+.floatingBook {
+  position: absolute;
+  opacity: 0.6;
+  filter: blur(2px);
+  animation: floatAndFade 20s infinite ease-in-out;
+  pointer-events: none; /* Make them unclickable */
+  z-index: -1; /* Ensure they are behind content */
+}
+
+/* Specific book styles (shapes and colors) */
+.book1 {
+  width: 80px; height: 120px;
+  background-color: #f7cac9; /* Soft coral */
+  border-radius: 8px;
+  left: 10%; top: 15%;
+  animation-delay: 0s;
+}
+.book2 {
+  width: 100px; height: 150px;
+  background-color: #b3e0ff; /* Soft sky blue */
+  border-radius: 10px;
+  left: 80%; top: 50%;
+  animation-delay: 5s;
+  transform: rotate(20deg);
+}
+.book3 {
+  width: 70px; height: 110px;
+  background-color: #d1c4e9; /* Soft lavender */
+  border-radius: 7px;
+  left: 30%; top: 70%;
+  animation-delay: 10s;
+  transform: rotate(-10deg);
+}
+.book4 {
+  width: 90px; height: 130px;
+  background-color: #c9f7d6; /* Soft mint green */
+  border-radius: 9px;
+  left: 5%; top: 85%;
+  animation-delay: 15s;
+  transform: rotate(30deg);
+}
+.book5 {
+  width: 60px; height: 90px;
+  background-color: #ffe0b2; /* Soft peach */
+  border-radius: 6px;
+  left: 90%; top: 10%;
+  animation-delay: 20s;
+  transform: rotate(-25deg);
+}
+.book6 {
+  width: 110px; height: 160px;
+  background-color: #f0e6fa; /* Lighter lavender */
+  border-radius: 11px;
+  left: 45%; top: 5%;
+  animation-delay: 25s;
+  transform: rotate(15deg);
+}
+
+@keyframes floatAndFade {
+  0%, 100% {
+    transform: translateY(0) rotate(var(--initial-rotate, 0deg));
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-20px) rotate(var(--middle-rotate, 5deg));
+    opacity: 0.9;
+  }
+}
+
+/* Applying initial rotation as custom properties to re-use in animation */
+.book1 { --initial-rotate: 0deg; --middle-rotate: 5deg; }
+.book2 { --initial-rotate: 20deg; --middle-rotate: 25deg; }
+.book3 { --initial-rotate: -10deg; --middle-rotate: -5deg; }
+.book4 { --initial-rotate: 30deg; --middle-rotate: 35deg; }
+.book5 { --initial-rotate: -25deg; --middle-rotate: -20deg; }
+.book6 { --initial-rotate: 15deg; --middle-rotate: 20deg; }
