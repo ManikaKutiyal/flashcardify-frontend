@@ -48,7 +48,7 @@ useEffect(() => {
   const handleCreateCard = async (e) => {
     e.preventDefault();
     if (!selectedDeck || !newCard.front || !newCard.back) return;
-    const response = await fetch(`http://localhost:5001/api/decks/${selectedDeck._id}/cards`, {
+    const response = await fetch(`https://flashcardify-backend.vercel.app/api/decks/${selectedDeck._id}/cards`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newCard),
@@ -61,7 +61,7 @@ useEffect(() => {
 
   const handleDeleteCard = async (cardId) => {
     if (!selectedDeck) return;
-    const response = await fetch(`http://localhost:5001/api/decks/${selectedDeck._id}/cards/${cardId}`, {
+    const response = await fetch(`https://flashcardify-backend.vercel.app/api/decks/${selectedDeck._id}/cards/${cardId}`, {
       method: 'DELETE',
     });
     const updatedDeck = await response.json();
@@ -72,7 +72,7 @@ useEffect(() => {
   const handleCreateDeck = async (e) => {
     e.preventDefault();
     if (!title) return;
-    const response = await fetch('http://localhost:5001/api/decks', {
+    const response = await fetch('https://flashcardify-backend.vercel.app/api/decks', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ title }),
@@ -84,7 +84,7 @@ useEffect(() => {
 
   const handleDeleteDeck = async (e, deckId) => {
     e.stopPropagation(); // Prevents the li's onClick from firing
-    await fetch(`http://localhost:5001/api/decks/${deckId}`, {
+    await fetch(`https://flashcardify-backend.vercel.app/api/decks/${deckId}`, {
       method: 'DELETE',
     });
     setDecks(decks.filter(deck => deck._id !== deckId));
