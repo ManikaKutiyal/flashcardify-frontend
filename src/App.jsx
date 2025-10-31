@@ -18,7 +18,7 @@ function App() {
 
   useEffect(() => {
     async function fetchDecks() {
-      const response = await fetch('https://flashcardify-backend.vercel.app/');
+      const response = await fetch('https://flashcardify-backend.vercel.app/api/decks');
       const data = await response.json();
       setDecks(data);
     }
