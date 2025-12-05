@@ -1,16 +1,109 @@
-# React + Vite
+# Flashcardify — Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Live App: https://flashcardify-frontend.vercel.app/
 
-Currently, two official plugins are available:
+This repository contains the **frontend application** for **Flashcardify**, a full-stack platform that turns user input into **interactive flashcards** using AI-powered processing.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The frontend handles the complete user experience — input collection, API communication with the backend, flashcard rendering, and dynamic UI updates.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🌐 Project Links
 
-## Expanding the ESLint configuration
+- **Frontend Repository:** https://github.com/ManikaKutiyal/flashcardify-frontend  
+- **Backend Repository:** https://github.com/ManikaKutiyal/flashcardify-backend  
+- **Live Backend API:** https://flashcardify-backend.vercel.app/
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 📌 What is Flashcardify?
+
+Flashcardify is an educational AI tool designed to help users learn faster by converting **notes, topics, or text input into flashcards**.
+
+### Workflow:
+1. User submits text or study topics from the frontend.
+2. Frontend sends the input to the backend API.
+3. Backend processes the input using AI logic and generates flashcards.
+4. Flashcards are returned as structured JSON.
+5. Frontend displays the cards interactively for easy studying.
+
+---
+
+## ✨ Features
+
+- AI-powered flashcard generation
+- Clean & minimal input interface
+- Dynamic flashcard rendering
+- Responsive layout for all devices
+- API integration with full backend service
+- Deployed live on Vercel
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+- React
+- Vite
+- JavaScript
+- CSS
+
+### Backend
+- Node.js
+- Express.js
+- AI/LLM-powered text processing
+
+---
+
+## 🚀 Run Locally
+
+```bash
+# Clone the frontend repository
+git clone https://github.com/ManikaKutiyal/flashcardify-frontend.git
+
+# Navigate into the project
+cd flashcardify-frontend
+
+# Install dependencies
+npm install
+
+# Start the dev server
+npm run dev
+```
+Local frontend will run at:
+```
+http://localhost:5173
+```
+🔌 Backend Connection
+
+By default, the frontend connects to the deployed backend:
+```
+https://flashcardify-backend.vercel.app/
+```
+
+If running the backend locally, update the API base URL in source to:
+```
+http://localhost:5000
+```
+🔄 Application Flow
+
+User enters text or topic
+
+Frontend sends request to backend API
+
+Backend generates flashcards using AI
+
+Flashcards returned as JSON
+
+Frontend renders them interactively
+
+📁 Project Structure
+```
+src/
+ ├── components/
+ ├── App.jsx
+ └── main.jsx
+```
+Author
+
+Manika Kutiyal
